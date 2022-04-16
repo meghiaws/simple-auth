@@ -1,0 +1,2 @@
+Client id = pgHz1GHiyL5P6uU5bMbEEQR525p3XJGBLcMFIrhh
+Client secret = ZOez9hMb5Su9ZC89gmkyDPzbYrKPqFfpud1ZspsrOSvUfCaoA4zYqi0COrOfnk4p1qRwsfKrc7mdFmP6e3MjobgFEhy3SiSSVToMyxPn2VO8JTAdpgDIG98LoWXAh0Ep

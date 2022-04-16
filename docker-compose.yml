@@ -2,17 +2,17 @@ version: '3.8'
 
 services:
 
-  # web:
-  #   build: .
-  #   command: ./docker-entrypoint.sh
-  #   ports:
-  #     - "8000:8000"
-  #   depends_on:
-  #     - db
-  #   env_file: .env
-  #   restart: on-failure
-  #   volumes:
-  #     - .:/home/app/web
+  web:
+    build: .
+    command: ./docker-entrypoint.sh
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file: .env
+    restart: on-failure
+    volumes:
+      - .:/home/app/web
 
   db:
     image: postgres:13.6

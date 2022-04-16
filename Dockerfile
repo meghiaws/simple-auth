@@ -11,8 +11,6 @@ RUN pip install --upgrade pip && \
 
 COPY pyproject.toml poetry.lock ${WORKDIR}
 
-# Docker containers are already isolated and don't need virtual environments.
-# so we turn off the creation of virtualenv.
 RUN poetry export -f requirements.txt --output requirements.txt && \
     pip install -r requirements.txt
 

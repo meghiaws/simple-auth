@@ -22,7 +22,11 @@ env.read_env(settings.BASE_DIR / ".env")
 def login(request):
     username = request.data.get("username")
     password = request.data.get("password")
-    user = User.objects.get(username=username)
+
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return Response("The user doesnt exist", status=status.HTTP_404_NOT_FOUND)
 
     if not user.check_password(password):
         return Response(
@@ -46,18 +50,18 @@ def login(request):
 
 
 class UserList(ListCreateAPIView):
-    permission_classes = (IsAdminUser, )
+    permission_classes = (IsAdminUser,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
 class UserDetails(RetrieveAPIView):
-    permission_classes = (IsAdminUser, )
+    permission_classes = (IsAdminUser,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
 class UserViewset(ModelViewSet):
-    permission_classes = (IsAdminUser, )
+    permission_classes = (IsAdminUser,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
