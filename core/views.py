@@ -1,7 +1,6 @@
 from django.conf import settings
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAdminUser
 from rest_framework import status
@@ -47,18 +46,6 @@ def login(request):
     ).hexdigest()
     token = total_params + "." + signature
     return Response("JWT " + token, status=status.HTTP_200_OK)
-
-
-class UserList(ListCreateAPIView):
-    permission_classes = (IsAdminUser,)
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
-class UserDetails(RetrieveAPIView):
-    permission_classes = (IsAdminUser,)
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
 
 
 class UserViewset(ModelViewSet):
